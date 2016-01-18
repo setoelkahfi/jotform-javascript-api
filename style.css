@@ -1,0 +1,11 @@
+textarea {
+    resize: vertical;
+    max-height: 200px;
+}
+.main-container {
+    padding-top: 60px;   
+}
+.date-input {
+    width: 90%;
+    display: inline;
+}

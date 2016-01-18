@@ -1,0 +1,48 @@
+<h1>{{ title }}</h1>
+<div class="row">
+    <div class="col-md-6">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="heading" class="col-sm-2 control-label">Heading</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="2" ng-model="heading"></textarea>
+                </div>
+            </div>
+            <div class="form-group" ng-repeat="day in days">
+                <label for="inputPassword3" class="col-sm-2 control-label">
+                    <a href="javascript:void(0)" ng-click="removeDay($index)" title="Remove day"><span class="glyphicon glyphicon-remove" aria-hidden="true" ></span></a>
+                </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="{{day.placeholder}}" ng-model="day.value" value="{{ day.value }}"/>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-2 control-label">
+                    <a href="javascript:void(0)" ng-click="addDay()" title="Add day" ng-if="days.length < 3"><span class="glyphicon glyphicon-plus"></span></a>
+                </label>
+                <div class="col-sm-10">
+                    <div class="alert alert-warning" role="alert" ng-if="days.length > 2">Currently, you just set 3 days full. Contact your administrator to add more days.</div>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-2 control-label">
+                    
+                </label>
+                <div class="col-sm-10">
+                    <div class="alert alert-success" role="alert" ng-if="modifySuccess">All fields successfully updated.</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary" ng-class="{disabled: processing}" ng-click="modifyForm()">{{processButton}}</button>
+                </div>
+            </div>
+        </form>        
+    </div>
+    <div class="col-md-5 col-md-offset-1">
+        <form class="form-horizontal">
+            <div class="form-group">{{heading}}</div>
+            <div class="form-group" ng-repeat="day in days">{{day.value}}</div>
+        </form>
+    </div>
+</div>
